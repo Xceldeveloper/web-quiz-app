@@ -47,7 +47,7 @@
               <span v-if="inputed_answer != ''">
                 <br />
                 <br />
-                <v-btn block rounded @click="checkAnswer">Check</v-btn>
+                <v-btn block  @click="checkAnswer">Check</v-btn>
               </span>
             </v-card>
           </v-carousel-item>
@@ -88,12 +88,10 @@
           <span class="answer_text" v-html="correct_answer"></span>
         </v-card-text>
         <v-card-actions>
-          <v-spacer></v-spacer>
           <v-btn
             color="#000"
             dark
-            rounded
-            right
+            block
             @click="showNext"
             v-if="current_question_index < questions.length - 1"
           >
@@ -128,10 +126,10 @@
           >
             {{ answer.correct }} / {{ questions.length }}
           </v-progress-circular>
-          <br />
-          <v-btn rounded block color="#000" dark @click="initQuiz"
-            >Restart</v-btn
-          >
+          <br /> <br>
+          <!-- <v-btn  block color="#000" dark @click="initQuiz"
+            >Retake</v-btn
+          > -->
           <v-btn block text to="/">Home</v-btn>
         </v-card-text>
       </v-card>
@@ -171,7 +169,7 @@
           </v-card>
         </v-card-text>
         <v-card-actions>
-          <v-btn block rounded outlined @click="fetchQuestions">Begin</v-btn>
+          <v-btn block  outlined @click="fetchQuestions">Begin</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -187,7 +185,7 @@
         <v-card-text>
           Unable to Fetch questions
           <v-card-actions>
-            <v-btn block outlined rounded @click="fetchQuestions">Retry</v-btn>
+            <v-btn block outlined  @click="fetchQuestions">Retry</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-card>
