@@ -1,11 +1,13 @@
 <template>
   <div id="wrapper">
-    <v-toolbar color="#002857" dense>
+    <v-toolbar dark color="#000" dense>
       <v-btn @click="navBack" icon><v-icon>mdi-chevron-left</v-icon></v-btn>
-      <v-toolbar-title>General: {{questionDifficulty.toUpperCase()}}</v-toolbar-title>
+      <v-toolbar-title
+        >General: {{ questionDifficulty.toUpperCase() }}</v-toolbar-title
+      >
       <v-spacer></v-spacer>
       <span v-if="raw_questions.length > 0">
-        {{ current_question_index + 1 + '/' + raw_questions.length }}</span
+        {{ current_question_index + 1 + "/" + raw_questions.length }}</span
       >
 
       <v-progress-circular indeterminate v-if="isLoading"></v-progress-circular>
@@ -88,7 +90,9 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            text
+            color="#000"
+            dark
+            rounded
             right
             @click="showNext"
             v-if="current_question_index < questions.length - 1"
@@ -117,17 +121,19 @@
         <v-card-title>Summary</v-card-title>
         <v-card-text>
           <v-progress-circular
-            color="#002857"
+            color="#000"
+            track-color="primary"
             size="80"
             :value="(answer.correct / questions.length) * 100"
           >
             {{ answer.correct }} / {{ questions.length }}
           </v-progress-circular>
+          <br />
+          <v-btn rounded block color="#000" dark @click="initQuiz"
+            >Restart</v-btn
+          >
+          <v-btn block text to="/">Home</v-btn>
         </v-card-text>
-        <v-card-actions>
-          <v-btn  text to="/quiz">Home</v-btn>
-          <v-btn  text @click="initQuiz">Restart</v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
 
@@ -141,54 +147,51 @@
         <v-card-title> Quiz Settings </v-card-title>
 
         <v-card-text>
-          <v-card>
-            <v-radio-group v-model="questionDifficulty">
-              <v-radio label="Easy" value="easy"></v-radio>
-              <v-radio label="Medium" value="medium"></v-radio>
-              <v-radio label="Hard" value="hard"></v-radio>
-            </v-radio-group>
+          <v-card elevation="0">
+            <v-card-text>
+              <v-radio-group v-model="questionDifficulty">
+                <v-radio label="Easy" color="#000" value="easy"></v-radio>
+                <v-radio label="Medium" color="#000" value="medium"></v-radio>
+                <v-radio label="Hard" color="#000" value="hard"></v-radio>
+              </v-radio-group>
+            </v-card-text>
           </v-card>
-         <br>
-          <v-card>
-           
-              <v-slider
-                v-model="questionCount"
-                :min="10"
-                :value="questionCount"
-                :max="50"
-                thumb-color="#002857"
-                thumb-label="always"
-              ></v-slider>
-         
+          <br />
+          <v-card elevation="0">
+            <v-slider
+              v-model="questionCount"
+              :min="10"
+              :value="questionCount"
+              :max="50"
+              color="#000"
+              track-color="#000"
+              thumb-color="#000"
+              thumb-label="always"
+            ></v-slider>
           </v-card>
         </v-card-text>
         <v-card-actions>
-          <v-btn text block @click="fetchQuestions">Begin</v-btn>
+          <v-btn block rounded outlined @click="fetchQuestions">Begin</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
-
-  
-
-   <v-dialog
-     v-model="errorLoading"
-     persistent 
-     max-width="500px"
-     transition="dialog-transition"
-   >
+    <v-dialog
+      v-model="errorLoading"
+      persistent
+      max-width="500px"
+      transition="dialog-transition"
+    >
       <v-card>
-      <v-card-title>
-        Error Loading...
-      </v-card-title>
-      <v-card-text>
-        Unable to Fetch questions
-       <v-card-actions>
-        <v-btn block outlined rounded  @click="fetchQuestions">Retry</v-btn>
-       </v-card-actions>
-      </v-card-text>
-    </v-card>
-   </v-dialog>
+        <v-card-title> Error Loading... </v-card-title>
+        <v-card-text>
+          Unable to Fetch questions
+          <v-card-actions>
+            <v-btn block outlined rounded @click="fetchQuestions">Retry</v-btn>
+          </v-card-actions>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -196,18 +199,18 @@
 import device_mixin from "~/mixins/device_mixin.js";
 import navigation_mixin from "~/mixins/navigation_mixin.js";
 export default {
-  mixins: [device_mixin,navigation_mixin],
+  mixins: [device_mixin, navigation_mixin],
   data() {
     return {
       answerDialog: false,
-      inputed_answer: '',
+      inputed_answer: "",
       current_question_index: 0,
-      errorLoading:false,
-      current_question: '',
-      correct_answer: '',
+      errorLoading: false,
+      current_question: "",
+      correct_answer: "",
       isCorrect: false,
       finishDialog: false,
-      isLoading:false,
+      isLoading: false,
       raw_questions: [
         // {
         //   question: 'Who is the CEO of Astrux ?',
@@ -229,112 +232,112 @@ export default {
         correct: 0,
         wrong: 0,
       },
-      questionCount:10,
-      questionDifficulty: 'easy',
+      questionCount: 10,
+      questionDifficulty: "easy",
       startDialog: true,
-    }
+    };
   },
   mounted() {
-   this.initQuiz()
+    this.initQuiz();
   },
   methods: {
     fetchQuestions() {
-        this.startDialog = false
-        this.isLoading = true
-        this.errorLoading = false
+      this.startDialog = false;
+      this.isLoading = true;
+      this.errorLoading = false;
       this.$axios
         .$get(
-          'https://opentdb.com/api.php?amount=' +
+          "https://opentdb.com/api.php?amount=" +
             this.questionCount +
-            '&category=9&difficulty=' +
+            "&category=9&difficulty=" +
             this.questionDifficulty +
-            '&type=multiple'
+            "&type=multiple"
         )
         .then((res) => {
-          this.raw_questions = res.results
-          console.log(JSON.stringify(this.raw_questions, null, 2))
+          this.raw_questions = res.results;
+          console.log(JSON.stringify(this.raw_questions, null, 2));
 
-          this.isLoading = false
-          this.formatedQuestions()
+          this.isLoading = false;
+          this.formatedQuestions();
         })
         .catch((err) => {
-          this.errorLoading = true
-          this.isLoading = false
-        })
+          this.errorLoading = true;
+          this.isLoading = false;
+        });
     },
     formatedQuestions() {
       for (var i = 0; i < this.raw_questions.length; i++) {
-        var obj = this.raw_questions[i]
-        var optionsArray = obj.incorrect_answers
-        optionsArray.push(obj.correct_answer)
+        var obj = this.raw_questions[i];
+        var optionsArray = obj.incorrect_answers;
+        optionsArray.push(obj.correct_answer);
 
         var newQuestion = {
           question: obj.question,
           options: this.shuffleArray(optionsArray),
           answer: obj.correct_answer,
-        }
+        };
 
-        this.questions.push(newQuestion)
+        this.questions.push(newQuestion);
       }
     },
 
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[array[i], array[j]] = [array[j], array[i]]
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
       }
-      return array
+      return array;
     },
 
     checkAnswer() {
       this.current_question = this.questions[
         this.current_question_index
-      ].question
+      ].question;
       if (
         this.inputed_answer ==
         this.questions[this.current_question_index].answer
       ) {
-        this.isCorrect = true
-        this.answer.correct += 1
+        this.isCorrect = true;
+        this.answer.correct += 1;
       } else {
-        this.isCorrect = false
-        this.answer.wrong += 1
+        this.isCorrect = false;
+        this.answer.wrong += 1;
       }
 
-      console.log(this.questions[this.current_question_index].answer)
-      this.correct_answer = this.questions[this.current_question_index].answer
-      this.answerDialog = true
+      console.log(this.questions[this.current_question_index].answer);
+      this.correct_answer = this.questions[this.current_question_index].answer;
+      this.answerDialog = true;
     },
 
     showNext() {
-      this.current_question_index++
-      this.inputed_answer = ''
-      this.answerDialog = false
+      this.current_question_index++;
+      this.inputed_answer = "";
+      this.answerDialog = false;
     },
 
     calculate() {
-      this.finishDialog = true
+      this.finishDialog = true;
     },
 
     initQuiz() {
-        this.finishDialog = false
-      this.questions = []
-      this.raw_questions = []
-      this.current_question_index = 0
-      this.answerDialog = false
-      this.correct_answer = ''
-      this.isCorrect = false
-      this.answer.correct = 0
-      this.answer.wrong = 0
-      this.current_question = ''
+      this.finishDialog = false;
+      this.questions = [];
+      this.raw_questions = [];
+      this.current_question_index = 0;
+      this.answerDialog = false;
+      this.correct_answer = "";
+      this.isCorrect = false;
+      this.answer.correct = 0;
+      this.answer.wrong = 0;
+      this.current_question = "";
 
-      this.questionCount = 10
-      this.questionDifficulty = 'easy'
+      this.questionCount = 10;
+      this.questionDifficulty = "easy";
 
-      this.startDialog = true 
+      this.startDialog = true;
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

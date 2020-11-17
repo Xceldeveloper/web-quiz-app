@@ -1,10 +1,10 @@
 <template>
   <div id="wrapperxy">
-    <v-toolbar dense color="#002857" absolute width="100%">
+    <v-toolbar dense dark color="#000" absolute width="100%">
       <v-toolbar-title>XcelQuiz</v-toolbar-title>
     </v-toolbar>
-<br><br>
-    <v-card  color="transparent">
+    <br /><br />
+    <v-card color="transparent" elevation="0">
       <v-card-text>
         <v-row align="center" justify="center">
           <v-col :cols="12">
@@ -59,64 +59,51 @@
       </v-card-text>
     </v-card>
 
+    <div class="footerx">
+      <v-row class="fill-height ma-0" align="center" justify="center">
+        <div class="contact-wrapper" id="contact">
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <a v-on="on" href="https://xceldeveloper.netlify.app"
+                ><v-btn large icon><v-icon>mdi-link</v-icon></v-btn></a
+              >
+            </template>
+            <span>xceldeveloper.netlify.app</span>
+          </v-tooltip>
 
-        <div class="footerx">
-        <v-row class="fill-height ma-0" align="center" justify="center">
-          <div class="contact-wrapper" id="contact">
-             <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <a v-on="on" href="https://xceldeveloper.com"
-                  ><v-btn large icon><v-icon>mdi-link</v-icon></v-btn></a
-                >
-              </template>
-              <span>xceldeveloper.com</span>
-            </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <a v-on="on" href="mailto:xceldeveloper@gmail.com"
+                ><v-btn large icon><v-icon>mdi-gmail</v-icon></v-btn></a
+              >
+            </template>
+            <span>xceldeveloper@gmail.com</span>
+          </v-tooltip>
 
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <a v-on="on" href="mailto:xceldeveloper@gmail.com"
-                  ><v-btn large icon><v-icon>mdi-gmail</v-icon></v-btn></a
-                >
-              </template>
-              <span>xceldeveloper@gmail.com</span>
-            </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <a v-on="on" href="https://twitter.com/xceldeveloper"
+                ><v-btn large icon><v-icon>mdi-twitter</v-icon></v-btn></a
+              >
+            </template>
+            <span>xceldeveloper</span>
+          </v-tooltip>
 
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <a v-on="on" href="https://twitter.com/xceldeveloper"
-                  ><v-btn large icon><v-icon>mdi-twitter</v-icon></v-btn></a
-                >
-              </template>
-              <span>xceldeveloper</span>
-            </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <a v-on="on" href="https://instagram.com/xceldeveloper"
+                ><v-btn large icon><v-icon>mdi-instagram</v-icon></v-btn></a
+              >
+            </template>
+            <span>xceldeveloper</span>
+          </v-tooltip>
+        </div>
 
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <a v-on="on" href="https://instagram.com/xceldeveloper"
-                  ><v-btn large icon><v-icon>mdi-instagram</v-icon></v-btn></a
-                >
-              </template>
-              <span>xceldeveloper</span>
-            </v-tooltip>
-
-           
-
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <a v-on="on" href="https://wa.me/2348158696460"
-                  ><v-btn large icon><v-icon>mdi-whatsapp</v-icon></v-btn></a
-                >
-              </template>
-              <span>+2348158696460</span>
-            </v-tooltip>
-          </div>
-
-          <span class="full-year"
-            >xceldeveloper {{ new Date().getFullYear() }}</span
-          >
-        </v-row>
-      </div>
-    
+        <span class="full-year"
+          >xceldeveloper {{ new Date().getFullYear() }}</span
+        >
+      </v-row>
+    </div>
   </div>
 </template>
 
@@ -124,7 +111,7 @@
 import device_mixin from "~/mixins/device_mixin.js";
 import navigation_mixin from "~/mixins/navigation_mixin.js";
 export default {
-  mixins: [device_mixin,navigation_mixin],
+  mixins: [device_mixin, navigation_mixin],
   data() {
     return {};
   },
@@ -156,13 +143,7 @@ export default {
   width: 100%;
   height: auto;
   padding: 50px 0px;
-  background-color: #101010;
-}
-
-.contact-wrapper {
-  border: 1px solid #fff;
-  padding: 3px 10px;
-  border-radius: 30px;
+  background-color: #ededed;
 }
 
 .full-year {
@@ -172,9 +153,7 @@ export default {
   margin: 20px auto;
 }
 
-
 a {
   text-decoration: none;
 }
-
 </style>
