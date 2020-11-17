@@ -167,6 +167,28 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+
+  
+
+   <v-dialog
+     v-model="errorLoading"
+     persistent 
+     max-width="500px"
+     transition="dialog-transition"
+   >
+      <v-card>
+      <v-card-title>
+        Error Loading...
+      </v-card-title>
+      <v-card-text>
+        Unable to Fetch questions
+       <v-card-actions>
+        <v-btn block outlined rounded  @click="fetchQuestions">Retry</v-btn>
+       </v-card-actions>
+      </v-card-text>
+    </v-card>
+   </v-dialog>
   </div>
 </template>
 
@@ -180,6 +202,7 @@ export default {
       answerDialog: false,
       inputed_answer: '',
       current_question_index: 0,
+      errorLoading:false,
       current_question: '',
       correct_answer: '',
       isCorrect: false,
@@ -218,6 +241,7 @@ export default {
     fetchQuestions() {
         this.startDialog = false
         this.isLoading = true
+        this.errorLoading = false
       this.$axios
         .$get(
           'https://opentdb.com/api.php?amount=' +
@@ -234,7 +258,7 @@ export default {
           this.formatedQuestions()
         })
         .catch((err) => {
-          alert(err)
+          this.errorLoading = true
           this.isLoading = false
         })
     },
