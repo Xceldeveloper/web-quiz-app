@@ -15,7 +15,7 @@
               </v-card-text>
             </v-card>
           </v-col>
-<!-- 
+
           <v-col :cols="isMobile ? 12 : 6">
             <v-card align="center" justify="center">
               <v-card-text>
@@ -54,7 +54,7 @@
                 <span class="quiz-category">Science</span>
               </v-card-text>
             </v-card>
-          </v-col> -->
+          </v-col>
         </v-row>
       </v-card-text>
     </v-card>
@@ -63,6 +63,15 @@
         <div class="footerx">
         <v-row class="fill-height ma-0" align="center" justify="center">
           <div class="contact-wrapper" id="contact">
+             <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a v-on="on" href="https://xceldeveloper.com"
+                  ><v-btn large icon><v-icon>mdi-link</v-icon></v-btn></a
+                >
+              </template>
+              <span>xceldeveloper.com</span>
+            </v-tooltip>
+
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
                 <a v-on="on" href="mailto:xceldeveloper@gmail.com"
@@ -90,14 +99,7 @@
               <span>xceldeveloper</span>
             </v-tooltip>
 
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <a v-on="on" href="https://github.com/xceldeveloper"
-                  ><v-btn large icon><v-icon>mdi-github</v-icon></v-btn></a
-                >
-              </template>
-              <span>xceldeveloper</span>
-            </v-tooltip>
+           
 
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
@@ -156,6 +158,20 @@ export default {
   padding: 50px 0px;
   background-color: #101010;
 }
+
+.contact-wrapper {
+  border: 1px solid #fff;
+  padding: 3px 10px;
+  border-radius: 30px;
+}
+
+.full-year {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
+
 
 a {
   text-decoration: none;
