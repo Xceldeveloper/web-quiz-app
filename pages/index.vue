@@ -58,6 +58,63 @@
         </v-row>
       </v-card-text>
     </v-card>
+
+
+        <div class="footerx">
+        <v-row class="fill-height ma-0" align="center" justify="center">
+          <div class="contact-wrapper" id="contact">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a v-on="on" href="mailto:xceldeveloper@gmail.com"
+                  ><v-btn large icon><v-icon>mdi-gmail</v-icon></v-btn></a
+                >
+              </template>
+              <span>xceldeveloper@gmail.com</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a v-on="on" href="https://twitter.com/xceldeveloper"
+                  ><v-btn large icon><v-icon>mdi-twitter</v-icon></v-btn></a
+                >
+              </template>
+              <span>xceldeveloper</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a v-on="on" href="https://instagram.com/xceldeveloper"
+                  ><v-btn large icon><v-icon>mdi-instagram</v-icon></v-btn></a
+                >
+              </template>
+              <span>xceldeveloper</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a v-on="on" href="https://github.com/xceldeveloper"
+                  ><v-btn large icon><v-icon>mdi-github</v-icon></v-btn></a
+                >
+              </template>
+              <span>xceldeveloper</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a v-on="on" href="https://wa.me/2348158696460"
+                  ><v-btn large icon><v-icon>mdi-whatsapp</v-icon></v-btn></a
+                >
+              </template>
+              <span>+2348158696460</span>
+            </v-tooltip>
+          </div>
+
+          <span class="full-year"
+            >xceldeveloper {{ new Date().getFullYear() }}</span
+          >
+        </v-row>
+      </div>
+    
   </div>
 </template>
 
@@ -92,4 +149,16 @@ export default {
   font-size: 12px;
   padding: 15px;
 }
+
+.footerx {
+  width: 100%;
+  height: auto;
+  padding: 50px 0px;
+  background-color: #101010;
+}
+
+a {
+  text-decoration: none;
+}
+
 </style>
