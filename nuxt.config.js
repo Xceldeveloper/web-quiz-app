@@ -49,7 +49,7 @@ export default {
       short_name: 'XcelQuiz',
       lang: 'en',
       display: 'standalone',
-      theme_color: '#002857',
+      theme_color: '#000000',
       background_color: '#ffffff',
       "orientation": "portrait",
       start_url: '/',
