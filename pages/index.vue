@@ -100,7 +100,7 @@
         </div>
 
         <span class="full-year"
-          >xceldeveloper {{ new Date().getFullYear() }}</span
+          ><v-icon left>mdi-copyright</v-icon>   xceldeveloper {{ new Date().getFullYear() }}</span
         >
       </v-row>
     </div>
