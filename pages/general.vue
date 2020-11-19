@@ -237,11 +237,11 @@ export default {
     };
   },
   mounted() {
-    console.log("mounted general...");
+   // console.log("mounted general...");
     this.initQuiz();
   },
   destroyed(){
-    console.log('destroyed');
+   // console.log('destroyed');
      this.questions = [];
       this.raw_questions = [];
       this.current_question_index = 0;
@@ -271,7 +271,7 @@ export default {
         )
         .then((res) => {
           this.raw_questions = res.results;
-          console.log(JSON.stringify(this.raw_questions, null, 2));
+        //  console.log(JSON.stringify(this.raw_questions, null, 2));
 
           this.isLoading = false;
           this.current_question_index = 0 //under review
@@ -321,7 +321,7 @@ export default {
         this.answer.wrong += 1;
       }
 
-      console.log(this.questions[this.current_question_index].answer);
+    //  console.log(this.questions[this.current_question_index].answer);
       this.correct_answer = this.questions[this.current_question_index].answer;
       this.answerDialog = true;
     },
