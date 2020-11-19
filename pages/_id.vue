@@ -366,6 +366,16 @@ export default {
         return "General";
       }else if(this.quizId == 12){
           return "Music"
+      }else if(this.quizId == 18){
+         return "Computers"
+      }else if(this.quizId == 15){
+          return "Video Games"
+      }else if(this.quizId == 11){
+          return "Film"
+      }else if(this.quizId == 30){
+          return "Gadgets"
+      }else if(this.quizId == 21){
+          return "Sports"
       }
     },
   },

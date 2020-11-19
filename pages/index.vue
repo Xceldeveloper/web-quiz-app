@@ -27,7 +27,7 @@
           </v-col>
 
           <v-col :cols="isMobile ? 12 : 6">
-            <v-card align="center" justify="center">
+            <v-card align="center" justify="center" to="/18">
               <v-card-text>
                 <v-icon size="100px">mdi-desktop-mac</v-icon>
                 <span class="quiz-title">Computers</span>
@@ -37,7 +37,7 @@
           </v-col>
 
           <v-col :cols="isMobile ? 12 : 6">
-            <v-card align="center" justify="center">
+            <v-card align="center" justify="center" to="/15">
               <v-card-text>
                 <v-icon size="100px">mdi-gamepad</v-icon>
                 <span class="quiz-title">Video Games</span>
@@ -47,11 +47,30 @@
           </v-col>
 
           <v-col :cols="isMobile ? 12 : 6">
-            <v-card align="center" justify="center">
+            <v-card align="center" justify="center" to="/11">
               <v-card-text>
                 <v-icon size="100px">mdi-film</v-icon>
                 <span class="quiz-title">Film</span>
+                <span class="quiz-category">Entertainment</span>
+              </v-card-text>
+            </v-card>
+          </v-col>
+
+          <v-col :cols="isMobile ? 12 : 6">
+            <v-card align="center" justify="center" to="/30">
+              <v-card-text>
+                <v-icon size="100px">mdi-passport-biometric</v-icon>
+                <span class="quiz-title">Gadgets</span>
                 <span class="quiz-category">Science</span>
+              </v-card-text>
+            </v-card>
+          </v-col>
+
+          <v-col :cols="isMobile ? 12 : 6">
+            <v-card align="center" justify="center" to="/21">
+              <v-card-text>
+                <v-icon size="100px">mdi-tennis-ball</v-icon>
+                <span class="quiz-title">Sports</span>
               </v-card-text>
             </v-card>
           </v-col>
@@ -100,7 +119,8 @@
         </div>
 
         <span class="full-year"
-          ><v-icon left>mdi-copyright</v-icon>   xceldeveloper {{ new Date().getFullYear() }}</span
+          ><v-icon left>mdi-copyright</v-icon> xceldeveloper
+          {{ new Date().getFullYear() }}</span
         >
       </v-row>
     </div>
@@ -114,7 +134,7 @@ export default {
   mixins: [device_mixin, navigation_mixin],
   data() {
     return {};
-  }
+  },
 };
 </script>
 
