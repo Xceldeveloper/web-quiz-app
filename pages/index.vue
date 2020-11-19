@@ -114,7 +114,7 @@ export default {
   mixins: [device_mixin, navigation_mixin],
   data() {
     return {};
-  },
+  }
 };
 </script>
 

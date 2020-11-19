@@ -47,7 +47,7 @@
               <span v-if="inputed_answer != ''">
                 <br />
                 <br />
-                <v-btn block  @click="checkAnswer">Check</v-btn>
+                <v-btn block @click="checkAnswer">Check</v-btn>
               </span>
             </v-card>
           </v-carousel-item>
@@ -116,7 +116,7 @@
       transition="dialog-transition"
     >
       <v-card align="center" justify="center">
-        <v-card-title>Summary</v-card-title>
+        <v-card-title>Score</v-card-title>
         <v-card-text>
           <v-progress-circular
             color="#000"
@@ -126,10 +126,11 @@
           >
             {{ answer.correct }} / {{ questions.length }}
           </v-progress-circular>
-          <br /> <br>
-          <!-- <v-btn  block color="#000" dark @click="initQuiz"
+          <br />
+          <br />
+          <v-btn  block color="#000" dark @click="initQuiz"
             >Retake</v-btn
-          > -->
+          >
           <v-btn block text to="/">Home</v-btn>
         </v-card-text>
       </v-card>
@@ -169,7 +170,7 @@
           </v-card>
         </v-card-text>
         <v-card-actions>
-          <v-btn block  outlined @click="fetchQuestions">Begin</v-btn>
+          <v-btn block dark color="#000" @click="fetchQuestions">Begin</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -185,7 +186,7 @@
         <v-card-text>
           Unable to Fetch questions
           <v-card-actions>
-            <v-btn block outlined  @click="fetchQuestions">Retry</v-btn>
+            <v-btn block small dark color="#000" @click="fetchQuestions">Retry</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-card>
@@ -236,6 +237,7 @@ export default {
     };
   },
   mounted() {
+    console.log("mounted general...");
     this.initQuiz();
   },
   methods: {
@@ -256,6 +258,7 @@ export default {
           console.log(JSON.stringify(this.raw_questions, null, 2));
 
           this.isLoading = false;
+          this.current_question_index = 0 //under review
           this.formatedQuestions();
         })
         .catch((err) => {
