@@ -240,6 +240,22 @@ export default {
     console.log("mounted general...");
     this.initQuiz();
   },
+  destroyed(){
+    console.log('destroyed');
+     this.questions = [];
+      this.raw_questions = [];
+      this.current_question_index = 0;
+      this.answerDialog = false;
+      this.correct_answer = "";
+      this.isCorrect = false;
+      this.answer.correct = 0;
+      this.answer.wrong = 0;
+      this.current_question = "";
+
+      this.questionCount = 10;
+      this.questionDifficulty = "easy";
+
+  },
   methods: {
     fetchQuestions() {
       this.startDialog = false;
