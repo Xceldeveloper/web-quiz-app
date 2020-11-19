@@ -17,7 +17,7 @@
           </v-col>
 
           <v-col :cols="isMobile ? 12 : 6">
-            <v-card align="center" justify="center">
+            <v-card align="center" justify="center" to="/12">
               <v-card-text>
                 <v-icon size="100px">mdi-music</v-icon>
                 <span class="quiz-title">Music</span>

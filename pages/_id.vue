@@ -364,6 +364,8 @@ export default {
         return "";
       } else if (this.quizId == 9) {
         return "General";
+      }else if(this.quizId == 12){
+          return "Music"
       }
     },
   },
